@@ -24,9 +24,9 @@ jobs:
 
       - name: Ejecutar Pipeline ETL
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_NEON }}
+          DATABASE_NEON: ${{ secrets.DATABASE_NEON }}
           API_DOMAIN: ${{ secrets.API_DOMAIN }}
           API_DATASET_ID: ${{ secrets.API_DATASET_ID }}
           API_TOKEN: ${{ secrets.API_TOKEN }}
-          API_LIMIT: ${{ secrets.LIMIT }}
+          LIMIT: ${{ secrets.LIMIT }}
         run: python Trm_Diaria.py
