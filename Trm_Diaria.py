@@ -1,6 +1,6 @@
 import pandas as pd
 from sodapy import Socrata
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
 import os
 
@@ -36,7 +36,13 @@ def data_transf_trm(trm):
 
 # LOAD DATA TO POSTGRESQL NEON
 def data_load_trm(clean_data, table_name, pg_motor):
-    clean_data.to_sql(table_name, pg_motor, if_exists='replace', index=False)
+
+    with pg_motor.begin() as conn:
+        # TRUNCATE vacía la tabla al instante, pero deja la estructura intacta para que la vista no se rompa
+        conn.execute(text(f"TRUNCATE TABLE {table_name};"))
+
+    clean_data.to_sql(table_name, pg_motor, if_exists='append', index=False)
+    
     print(f"Cargando datos a PostgreSQL...{table_name}")
 
 
