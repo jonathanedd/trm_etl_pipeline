@@ -7,7 +7,7 @@ import os
 
 load_dotenv()
 
-#DATA EXTRACTION FROM SOCIETY API
+#DATA EXTRACTION FROM SOCIETY API 
 def data_extract_trm():
    domain = os.getenv("API_DOMAIN")
    dataset_id = os.getenv("API_DATASET_ID")
@@ -65,7 +65,7 @@ load_data = data_load_trm(clean_data, "trm_diaria", pg_motor)
 
 
 
-
+# 08/jul/2026:6:14 PM - Verifying the TRM code flows with no issue, Script run manually. 
 
 
 
