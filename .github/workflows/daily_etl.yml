@@ -30,3 +30,7 @@ jobs:
           API_TOKEN: ${{ secrets.API_TOKEN }}
           LIMIT: ${{ secrets.LIMIT }}
         run: python Trm_Diaria.py
+
+
+
+# 08/jul/2026:6:14 PM - Verifying the TRM code flows with no issue, Script run manually. 
